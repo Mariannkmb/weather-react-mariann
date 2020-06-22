@@ -1,4 +1,5 @@
 import React from "react";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function WeatherDetails(props) {
   return (
@@ -13,19 +14,7 @@ export default function WeatherDetails(props) {
         </div>
       </div>
       <div className="col-2 TempCeld">
-        <h2>
-          <span className="Temperature">{props.data.temperature}</span>
-          <span className="Metric">˚C</span>
-        </h2>
-        <h5 className="change-metric">
-          <a href="/" id="celcius" className="active">
-            ˚C
-          </a>
-          |
-          <a href="/" id="fahrenheit">
-            ˚F
-          </a>
-        </h5>
+        <WeatherTemperature temperature={props.data.temperature} />
       </div>
       <div className="col-5 WeatherImageCeld">
         <img src={props.data.icon} alt="" id="weather-icon" />

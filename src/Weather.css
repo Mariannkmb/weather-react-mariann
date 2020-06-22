@@ -108,8 +108,9 @@ h2,
   color: #48484a;
 }
 
-h6 {
+.NextDays {
   color: #ec6e4c;
+  font-size: 16px;
 }
 
 .RowDetailForecast {
