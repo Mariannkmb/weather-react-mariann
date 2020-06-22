@@ -4,6 +4,7 @@ import "./Weather.css";
 import date from "date-and-time";
 import WeatherDetails from "./WeatherDetails";
 import WeatherForecast from "./WeatherForecast";
+import LoaderSpinner from "./LoaderSpinner";
 
 export default function Weather(props) {
   const now = new Date();
@@ -84,6 +85,6 @@ export default function Weather(props) {
     );
   } else {
     searchCity();
-    return "Loading...";
+    return <LoaderSpinner />;
   }
 }
