@@ -38,7 +38,10 @@
   list-style: none;
   line-height: normal;
 }
-
+.Main {
+  font-size: 16px;
+  color: #48484a;
+}
 .DescriptionIcon {
   display: block;
   text-align: center;
@@ -74,13 +77,6 @@
   margin-top: 28px;
   line-height: 20px;
   font-size: 18px;
-}
-
-.Main {
-  display: block;
-  margin-left: 20px;
-  font-size: 16px;
-  color: #48484a;
 }
 
 .Loader {
