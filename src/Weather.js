@@ -11,6 +11,7 @@ export default function Weather(props) {
   const pattern = date.compile(" ddd, MMM DD YYYY");
   const [data, setData] = useState({ submit: false });
   const [city, setCity] = useState(props.defaultCity);
+  let apiKey = "b5de5ed43000236f70d3412957f9f340";
 
   function getData(response) {
     setData({
@@ -37,10 +38,20 @@ export default function Weather(props) {
   }
 
   function searchCity() {
-    let apiKey = "b5de5ed43000236f70d3412957f9f340";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
     axios.get(apiUrl).then(getData);
+  }
+
+  function CurrentCity(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(getLatitudeAndLongitude);
+  }
+
+  function getLatitudeAndLongitude(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric`;
+    axios.get(`${apiUrl}&appid=${apiKey}`).then(getData);
   }
 
   let headerForm = (
@@ -51,7 +62,7 @@ export default function Weather(props) {
         placeholder="Enter City"
         aria-label="Search"
         id="searchButton"
-        autocomplete="off"
+        autoComplete="off"
         onChange={handleCity}
       />
       <button
@@ -65,12 +76,11 @@ export default function Weather(props) {
         className="btn btn-outline-light my-2 my-sm-0"
         type="button"
         id="btn-current"
+        onClick={CurrentCity}
       >
         Current
       </button>
-      <p className="SetDate">
-        <div className="SetDate mt-6"> {date.format(now, pattern)}</div>
-      </p>
+      <div className="SetDate mt-6"> {date.format(now, pattern)}</div>
     </form>
   );
 

@@ -73,7 +73,8 @@
   white-space: nowrap;
 }
 
-.RowTodayForecast {
+.TempCeld,
+.DataCeld {
   margin-top: 28px;
   line-height: 20px;
   font-size: 18px;
