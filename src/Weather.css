@@ -1,21 +1,32 @@
 .WeatherAppWrapper {
-  font-family: "Chivo", sans-serif;
+  font-family: "Annie Use Your Telescope", cursive;
+  font-weight: bold;
   text-shadow: #48484a36 1px 1px;
   border: 1px solid #dadde1;
   padding: 15px;
-  border-radius: 10px;
-  border-width: 1px;
-  background-image: url("https://www.festivalclaca.cat/imgfv/b/5-57648_png-imges-free-download-clouds-png-hd-download.png");
+  border-style: inset;
+  border-width: 7px;
+  /* background-image: url(); */
+  /* background-image: url("https://www.festivalclaca.cat/imgfv/b/5-57648_png-imges-free-download-clouds-png-hd-download.png"); */
   background-size: 600px;
   background-repeat: no-repeat;
   background-position: top;
 }
 
+.RowHeader button,
+.RowHeader input,
+.RowHeader .SetDate {
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: #48484a36 1px 1px;
+}
+
 .AppTitle {
-  color: #ffff;
-  text-shadow: 2px 2px 2px #48484a9a;
+  font-family: "Bangers", sans-serif;
+  color: rgb(44, 43, 43);
+  text-shadow: 2px 2px 2px #a5a5aa9a;
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
 }
 
 .RowHeader {
@@ -30,6 +41,7 @@
 }
 
 .City {
+  font-family: "Bangers", sans-serif;
   padding-left: 20px;
   margin-bottom: 0px;
 }
@@ -39,7 +51,7 @@
   line-height: normal;
 }
 .Main {
-  font-size: 16px;
+  font-size: 20px;
   color: #48484a;
 }
 .DescriptionIcon {
@@ -77,7 +89,6 @@
 .DataCeld {
   margin-top: 28px;
   line-height: 20px;
-  font-size: 18px;
 }
 
 .Loader {
@@ -106,6 +117,7 @@
 h2,
 .weather-forecast-temperature {
   color: #48484a;
+  font-weight: bold;
 }
 
 .NextDays {

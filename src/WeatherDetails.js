@@ -1,6 +1,6 @@
 import React from "react";
 import WeatherTemperature from "./WeatherTemperature";
-
+import WeatherIcon from "./WeatherIcon";
 export default function WeatherDetails(props) {
   return (
     <div className="row RowTodayForecast">
@@ -17,8 +17,7 @@ export default function WeatherDetails(props) {
         <WeatherTemperature temperature={props.data.temperature} />
       </div>
       <div className="col-5 WeatherImageCeld">
-        <img src={props.data.icon} alt="" id="weather-icon" />
-        <p className="WeatherDescrip">{props.data.description}</p>
+        <WeatherIcon code={props.data.icon} descrip={props.data.description} />
       </div>
     </div>
   );

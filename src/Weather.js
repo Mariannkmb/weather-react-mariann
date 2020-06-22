@@ -22,7 +22,7 @@ export default function Weather(props) {
       tempmax: Math.round(response.data.main.temp_max),
       tempmin: Math.round(response.data.main.temp_min),
       wind: response.data.wind.speed,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
       city: response.data.name,
     });
   }
@@ -87,7 +87,7 @@ export default function Weather(props) {
   if (data.submit) {
     return (
       <div className="WeatherAppWrapper">
-        <h1 className="AppTitle">Weather</h1>
+        <h1 className="AppTitle">Snoopy Weather</h1>
         <div className="row RowHeader">{headerForm}</div>
         <WeatherDetails data={data} />
         <WeatherForecast />
