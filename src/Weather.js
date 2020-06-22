@@ -1,6 +1,8 @@
 import React from "react";
 import "./Weather.css";
 import date from "date-and-time";
+import WeatherDetails from "./WeatherDetails";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Weather(props) {
   const now = new Date();
@@ -40,44 +42,8 @@ export default function Weather(props) {
     <div className="WeatherAppWrapper">
       <h1 className="AppTitle">Weather</h1>
       <div className="row RowHeader">{headerForm}</div>
-
-      <div className="row RowTodayForecast">
-        <div className="col-5">
-          <h2 className="City"> {props.defaultCity} </h2>
-          <p className="Main">Precipitation: Humidity % Wind : Wind km/hr</p>
-        </div>
-        <div className="col-2 TempCeld">
-          <p>
-            <h2>
-              <span className="Temperature">20</span>
-              <span className="Metric">˚C</span>
-            </h2>
-            <h5 className="change-metric">
-              <a href="/" id="celcius" className="active">
-                ˚C
-              </a>
-              |
-              <a href="/" id="fahrenheit">
-                ˚F
-              </a>
-            </h5>
-          </p>
-        </div>
-        <div className="col-5 WeatherImageCeld">
-          <img
-            src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
-            alt=""
-            id="weather-icon"
-          />
-          <p className="WeatherDescrip">Cloudy</p>
-        </div>
-      </div>
-
-      <div className="row RowHeaderForecast">
-        <h3 className="ForecastTitle">Forecast</h3>
-        <h6>Next Days</h6>
-      </div>
-      <div className="row RowDetailForecast mh-30"></div>
+      <WeatherDetails city={props.defaultCity} />
+      <WeatherForecast />
     </div>
   );
 }
