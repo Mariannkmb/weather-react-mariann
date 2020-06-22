@@ -1,0 +1,140 @@
+.WeatherAppWrapper {
+  font-family: "Chivo", sans-serif;
+  text-shadow: #48484a36 1px 1px;
+  border: 1px solid #dadde1;
+  padding: 15px;
+  border-radius: 10px;
+  border-width: 1px;
+  background-image: url("https://www.festivalclaca.cat/imgfv/b/5-57648_png-imges-free-download-clouds-png-hd-download.png");
+  background-size: 600px;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.AppTitle {
+  color: #ffff;
+  text-shadow: 2px 2px 2px #48484a9a;
+  text-align: center;
+  font-size: 30px;
+}
+
+.RowHeader {
+  background-color: rgba(68, 130, 192, 0.274);
+  padding-left: 15px;
+}
+
+.SetDate {
+  margin-left: 10px;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.City {
+  padding-left: 20px;
+  margin-bottom: 0px;
+}
+
+.Main li {
+  list-style: none;
+  line-height: normal;
+}
+
+.DescriptionIcon {
+  display: block;
+  text-align: center;
+}
+.weather-forecast-icons {
+  width: 100%;
+}
+
+.btn-outline-secondary {
+  margin-right: 5px;
+}
+
+.City,
+.RowTodayForecast,
+.RowDetailForecast {
+  color: #3382ea;
+}
+
+.WeatherImageCeld,
+.TempCeld {
+  display: block;
+  text-align: center;
+}
+
+.ChangeMetric {
+  display: block;
+  line-height: 0px;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.RowTodayForecast {
+  margin-top: 28px;
+  line-height: 20px;
+  font-size: 18px;
+}
+
+.Main {
+  display: block;
+  margin-left: 20px;
+  font-size: 16px;
+  color: #48484a;
+}
+
+.Loader {
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.CurrentTemperatureLabel {
+  text-align: center;
+}
+
+.Min {
+  text-align: right;
+}
+.Max {
+  text-align: left;
+}
+
+.RowHeaderForecast {
+  display: block;
+  margin-top: 28px;
+  padding-left: 35px;
+}
+.ForecastTitle,
+h2,
+.weather-forecast-temperature {
+  color: #48484a;
+}
+
+h6 {
+  color: #ec6e4c;
+}
+
+.RowDetailForecast {
+  text-align: center;
+  font-size: 1em;
+  padding: 2%;
+  line-height: 3px;
+}
+
+.weather-forecast-temperature,
+.forecast-date {
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.ChangeMetric .active {
+  color: #48484a;
+  cursor: default;
+  display: inline-block;
+}
+.ChangeMetric .active:hover {
+  text-decoration: none;
+}
