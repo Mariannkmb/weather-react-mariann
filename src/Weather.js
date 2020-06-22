@@ -1,7 +1,11 @@
 import React from "react";
 import "./Weather.css";
+import date from "date-and-time";
 
 export default function Weather(props) {
+  const now = new Date();
+  const pattern = date.compile(" ddd, MMM DD YYYY");
+
   let headerForm = (
     <form className="form-inline search-box">
       <input
@@ -26,7 +30,9 @@ export default function Weather(props) {
       >
         Current
       </button>
-      <p className="SetDate">Date</p>
+      <p className="SetDate">
+        <div className="SetDate mt-6"> {date.format(now, pattern)}</div>
+      </p>
     </form>
   );
 
