@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./WeatherTemperature.css";
 
 export default function WeatherTemperature(props) {
   const [units, setUnits] = useState("C");
@@ -21,7 +22,7 @@ export default function WeatherTemperature(props) {
             : `${Math.round(props.temperature * (9 / 5) + 32)}˚F`}
         </span>
       </h2>
-      <h5 className="change-metric">
+      <h5 className="ChangeMetric">
         <a href="/" id="celcius" className="active" onClick={ShowCelsius}>
           ˚C
         </a>

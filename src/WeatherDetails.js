@@ -17,7 +17,11 @@ export default function WeatherDetails(props) {
         <WeatherTemperature temperature={props.data.temperature} />
       </div>
       <div className="col-5 WeatherImageCeld">
-        <WeatherIcon code={props.data.icon} descrip={props.data.description} />
+        <WeatherIcon
+          code={props.data.icon}
+          descrip={props.data.description}
+          temp={props.data.temperature}
+        />
       </div>
     </div>
   );

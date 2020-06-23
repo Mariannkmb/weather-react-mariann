@@ -1,6 +1,6 @@
 .SnoopyImages img {
   /* border-radius: 1000px; */
-  border-color: grey;
+  border: 1px solid #59514f;
   border-style: inset;
-  border-width: 7px;
+  border-width: 2px;
 }

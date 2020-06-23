@@ -2,15 +2,12 @@
   font-family: "Annie Use Your Telescope", cursive;
   font-weight: bold;
   text-shadow: #48484a36 1px 1px;
-  border: 1px solid #dadde1;
   padding: 15px;
+  border: 1px solid #59514f;
   border-style: inset;
-  border-width: 7px;
-  /* background-image: url(); */
-  /* background-image: url("https://www.festivalclaca.cat/imgfv/b/5-57648_png-imges-free-download-clouds-png-hd-download.png"); */
+  border-width: 2px;
+  background-color: #ffffff;
   background-size: 600px;
-  background-repeat: no-repeat;
-  background-position: top;
 }
 
 .RowHeader button,
@@ -81,12 +78,11 @@
 .ChangeMetric {
   display: block;
   line-height: 0px;
-  font-size: 16px;
+  font-size: 20px;
   white-space: nowrap;
 }
 
-.TempCeld,
-.DataCeld {
+.RowTodayForecast {
   margin-top: 28px;
   line-height: 20px;
 }

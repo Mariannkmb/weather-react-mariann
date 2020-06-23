@@ -26,7 +26,13 @@ export default function WeatherIcon(props) {
   return (
     <div className="SnoopyImages">
       <img
-        src={require(`../src/images/${codeMapping[props.code]}`)}
+        src={require(`../src/images/${
+          props.temp >= 35
+            ? "snoppyhot01.jpg"
+            : props.temp < 5
+            ? "snoppyfrezzing01.jpg"
+            : codeMapping[props.code]
+        }`)}
         width="200"
         alt={props.descrip}
       />
