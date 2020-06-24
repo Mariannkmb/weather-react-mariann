@@ -11,9 +11,9 @@ export default function WeatherIcon(props) {
     "03n": "snoopyclearsky03.jpg",
     "04d": "snoopybrokenclouds01.jpg",
     "04n": "snoopybrokenclouds02.jpg",
-    "09d": "snoopyraint01.jpg",
+    "09d": "snoopyrainy02.gif",
     "09n": "snoopyshowerrain01.gif",
-    "10d": "snoopyrainy02.gif",
+    "10d": "snoopyrainy01.gif",
     "10n": "snoopyshowerrain02.gif",
     "11d": "snoopythunder02.jpg",
     "11n": "snoopythunder01.jpg",
@@ -27,16 +27,17 @@ export default function WeatherIcon(props) {
     <div className="SnoopyImages">
       <img
         src={require(`../src/images/${
-          props.temp >= 35
-            ? "snoppyhot01.jpg"
-            : props.temp < 5
-            ? "snoppyfrezzing01.jpg"
+          props.temp >= 37
+            ? "snoopyhot01.jpg"
+            : props.temp < 0
+            ? "snoopyfrezzing01.jpg"
             : codeMapping[props.code]
         }`)}
-        width="200"
+        width="250"
         alt={props.descrip}
       />
-      <div class="text-uppercase">{props.descrip}</div>
+      {props.code}
+      <div className="text-uppercase">{props.descrip}</div>
     </div>
   );
 }

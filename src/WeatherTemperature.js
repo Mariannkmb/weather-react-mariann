@@ -23,11 +23,19 @@ export default function WeatherTemperature(props) {
         </span>
       </h2>
       <h5 className="ChangeMetric">
-        <a href="/" id="celcius" className="active" onClick={ShowCelsius}>
+        <a
+          href="/"
+          className={units === "C" ? "active" : "inactive"}
+          onClick={ShowCelsius}
+        >
           ˚C
         </a>
-        |
-        <a href="/" id="fahrenheit" onClick={ShowFahrenheiht}>
+        {" | "}
+        <a
+          href="/"
+          className={units === "F" ? "active" : "inactive"}
+          onClick={ShowFahrenheiht}
+        >
           ˚F
         </a>
       </h5>

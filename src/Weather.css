@@ -1,46 +1,44 @@
 .WeatherAppWrapper {
-  font-family: "Annie Use Your Telescope", cursive;
-  font-weight: bold;
+  font-family: "Patrick Hand", cursive;
   text-shadow: #48484a36 1px 1px;
   padding: 15px;
   border: 1px solid #59514f;
   border-style: inset;
   border-width: 2px;
   background-color: #ffffff;
-  background-size: 600px;
 }
 
 .RowHeader button,
 .RowHeader input,
 .RowHeader .SetDate {
-  font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   text-shadow: #48484a36 1px 1px;
 }
 
 .AppTitle {
   font-family: "Bangers", sans-serif;
-  color: rgb(44, 43, 43);
+  color: #010101;
   text-shadow: 2px 2px 2px #a5a5aa9a;
   text-align: center;
   font-size: 40px;
 }
 
 .RowHeader {
-  background-color: rgba(68, 130, 192, 0.274);
+  background-color: #0c0c0c;
   padding-left: 15px;
 }
 
 .SetDate {
   margin-left: 10px;
-  margin-top: 10px;
   font-size: 16px;
+  color: #ffffff;
 }
 
 .City {
   font-family: "Bangers", sans-serif;
   padding-left: 20px;
   margin-bottom: 0px;
+  font-size: 38px;
 }
 
 .Main li {
@@ -73,13 +71,6 @@
 .TempCeld {
   display: block;
   text-align: center;
-}
-
-.ChangeMetric {
-  display: block;
-  line-height: 0px;
-  font-size: 20px;
-  white-space: nowrap;
 }
 
 .RowTodayForecast {
@@ -117,7 +108,7 @@ h2,
 }
 
 .NextDays {
-  color: #ec6e4c;
+  color: #ae2f2f;
   font-size: 16px;
 }
 
@@ -134,13 +125,4 @@ h2,
   text-align: center;
   width: 100%;
   white-space: nowrap;
-}
-
-.ChangeMetric .active {
-  color: #48484a;
-  cursor: default;
-  display: inline-block;
-}
-.ChangeMetric .active:hover {
-  text-decoration: none;
 }

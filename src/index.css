@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url("https://66.media.tumblr.com/968dc1e5a6a7f5156c97be713315117a/tumblr_nv52pcu0Qj1rhjbado1_1280.jpg"); */
   background-image: url("../src/images/background-snoopy3.png");
   background-repeat: repeat;
 }

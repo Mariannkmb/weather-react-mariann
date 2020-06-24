@@ -8,7 +8,7 @@ import LoaderSpinner from "./LoaderSpinner";
 
 export default function Weather(props) {
   const now = new Date();
-  const pattern = date.compile(" ddd, MMM DD YYYY");
+  const pattern = date.compile(" ddd, MMM DD YYYY HH:mm");
   const [data, setData] = useState({ submit: false });
   const [city, setCity] = useState(props.defaultCity);
   let apiKey = "b5de5ed43000236f70d3412957f9f340";
