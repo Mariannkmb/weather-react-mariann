@@ -36,7 +36,6 @@ export default function WeatherIcon(props) {
         width="250"
         alt={props.descrip}
       />
-      {props.code}
       <div className="text-uppercase">{props.descrip}</div>
     </div>
   );

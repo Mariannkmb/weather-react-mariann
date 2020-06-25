@@ -18,6 +18,7 @@ export default function Weather(props) {
       submit: true,
       temperature: Math.round(response.data.main.temp),
       humidity: response.data.main.humidity,
+      feelslike: response.data.main.feels_like,
       description: response.data.weather[0].description,
       tempmax: Math.round(response.data.main.temp_max),
       tempmin: Math.round(response.data.main.temp_min),
@@ -55,7 +56,10 @@ export default function Weather(props) {
   }
 
   let headerForm = (
-    <form className="form-inline search-box" onSubmit={handleSubmit}>
+    <form
+      className="form-inline search-box SearchInput"
+      onSubmit={handleSubmit}
+    >
       <input
         className="form-control mr-sm-2"
         type="search"
@@ -90,7 +94,7 @@ export default function Weather(props) {
         <h1 className="AppTitle">Snoopy Weather</h1>
         <div className="row RowHeader">{headerForm}</div>
         <WeatherDetails data={data} />
-        <WeatherForecast />
+        <WeatherForecast city={data.city} />
       </div>
     );
   } else {

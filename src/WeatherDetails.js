@@ -1,6 +1,8 @@
 import React from "react";
 import WeatherTemperature from "./WeatherTemperature";
 import WeatherIcon from "./WeatherIcon";
+// import ReturnUnits from "./ReturnUnits";
+
 export default function WeatherDetails(props) {
   return (
     <div className="row RowTodayForecast">
@@ -10,6 +12,7 @@ export default function WeatherDetails(props) {
           <ul>
             <li> Humidity: {props.data.humidity} % </li>
             <li> Wind : {Math.round(props.data.wind * 3.6)} km/hr </li>
+            {/* <li> Feels Like : {Math.round(props.data.feelslike)}˚C</li> */}
           </ul>
         </div>
       </div>
