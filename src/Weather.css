@@ -36,7 +36,6 @@
 
 .City {
   font-family: "Bangers", sans-serif;
-  padding-left: 20px;
   margin-bottom: 0px;
   font-size: 38px;
   text-align: center;
@@ -75,10 +74,15 @@
   color: #3382ea;
 }
 
+.DataCeld {
+  padding: 0;
+}
+
 .WeatherImageCeld,
 .TempCeld {
   display: block;
   text-align: center;
+  padding: 0;
 }
 
 .RowTodayForecast {
@@ -106,13 +110,14 @@
 .RowHeaderForecast {
   display: block;
   margin-top: 28px;
-  padding-left: 35px;
+  padding-left: 20px;
 }
 .ForecastTitle,
 h2,
 .weather-forecast-temperature {
   color: #48484a;
   font-weight: bold;
+  padding-left: 15px;
 }
 
 .NextDays {
