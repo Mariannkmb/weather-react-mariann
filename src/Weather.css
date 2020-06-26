@@ -40,6 +40,12 @@
   margin-bottom: 0px;
   font-size: 38px;
 }
+.WeatherDescrip {
+  text-align: center;
+  padding: 12px;
+  font-size: 24px;
+  font-weight: bolder;
+}
 
 .Main li {
   list-style: none;

@@ -17,8 +17,8 @@ export default function WeatherForecastItems(props) {
   ];
 
   function Date(date) {
-    let month = date.substring(6, 7) - 1;
-    let day = date.substring(8, 10);
+    var month = date.substring(6, 7) - 1;
+    var day = date.substring(8, 10);
     return `${monthNames[month]} ${day}`;
   }
 
@@ -31,12 +31,14 @@ export default function WeatherForecastItems(props) {
       <img
         src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
         alt={description}
+        className="Icons"
+        width="80"
       />
     );
   }
 
   return (
-    <div className="col">
+    <div className="col ForecastItem">
       {Date(props.forecast.date)}
       {Icon(props.forecast.icon, props.forecast.description)}
       {Temperatures(props.forecast.tempmax, props.forecast.tempmin)}

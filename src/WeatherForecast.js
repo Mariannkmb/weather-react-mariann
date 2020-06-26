@@ -3,11 +3,10 @@ import axios from "axios";
 import Weather from "./Weather";
 import WeatherForecastItems from "./WeatherForecastItems";
 
-import "./WeatherForecast.css";
-
 export default function WeatherForecast(props) {
   const [submit, setSubmit] = useState(false);
   const [handle, setHandle] = useState(null);
+  const [newCity, setNewCity] = useState(null);
 
   function handleForecast(response) {
     let forecast = null;
@@ -15,6 +14,7 @@ export default function WeatherForecast(props) {
     let varTempMax = response.data.list[0].main.temp_max;
     let varTempMin = response.data.list[0].main.temp_min;
     let dayForecast = [];
+    setNewCity(response.data.city.name);
 
     for (var index = 0; index < 40; index++) {
       forecast = response.data.list[index];
@@ -28,8 +28,8 @@ export default function WeatherForecast(props) {
       } else {
         dayForecast.push({
           date: response.data.list[index].dt_txt.substring(0, 10),
-          tempmax: response.data.list[index].main.temp_max,
-          tempmin: response.data.list[index].main.temp_min,
+          tempmax: varTempMax,
+          tempmin: varTempMin,
           icon: response.data.list[index].weather[0].icon,
           description: response.data.list[index].weather[0].description,
         });
@@ -42,17 +42,12 @@ export default function WeatherForecast(props) {
     setSubmit(true);
   }
 
-  if (submit) {
+  if (submit && props.city === newCity) {
     return (
-      <div className="row RowHeaderForecast">
-        <h3 className="ForecastTitle">
-          Forecast <span className="NextDays">Next Days</span>
-        </h3>
-        <div className="RowDetailForecast row mh-30">
-          {handle.map(function (items) {
-            return <WeatherForecastItems forecast={items} />;
-          })}
-        </div>
+      <div className="RowDetailForecast row mh-30">
+        {handle.map(function (items) {
+          return <WeatherForecastItems forecast={items} />;
+        })}
       </div>
     );
   } else {
