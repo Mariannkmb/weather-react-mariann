@@ -14,7 +14,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Open-source code
+              Open-source code on Github
             </a>
             , by Mariann Montoya
           </small>
