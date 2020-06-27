@@ -1,0 +1,9 @@
+.ForecastItem {
+  display: block;
+  text-align: center;
+}
+
+.TempMaxForecast {
+  color: #cb3724;
+  text-shadow: 2px 2px 2px #a5a5aa9a;
+}

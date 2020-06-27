@@ -1,4 +1,5 @@
 import React from "react";
+import "./WeatherForecastItems.css";
 
 export default function WeatherForecastItems(props) {
   let monthNames = [
@@ -23,7 +24,12 @@ export default function WeatherForecastItems(props) {
   }
 
   function Temperatures(max, min) {
-    return `${Math.round(max)}˚C | ${Math.round(min)}˚C `;
+    return (
+      <div>
+        <span className="TempMaxForecast">{Math.round(max)}˚C</span>{" "}
+        {Math.round(min)}˚C
+      </div>
+    );
   }
 
   function Icon(icon, description) {
