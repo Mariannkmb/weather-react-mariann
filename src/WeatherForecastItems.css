@@ -1,15 +1,16 @@
 .ForecastItem {
-  display: inline-table;
+  display: inline;
   text-align: center;
+  line-height: 1em;
 }
 
 .TempMaxForecast {
   color: #cb3724;
 }
-.TempMaxForecast,
+/* .TempMaxForecast,
 .TempMinForecast {
   line-height: 1em;
-}
+} */
 
 .Icons {
   border-radius: 50px;
