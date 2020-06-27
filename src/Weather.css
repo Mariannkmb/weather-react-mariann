@@ -52,12 +52,11 @@
   margin-bottom: 10px;
 }
 
-.Main li {
-  list-style: none;
+.Main {
   line-height: normal;
   font-size: 20px;
   color: #48484a;
-  text-align: left;
+  text-align: center;
 }
 
 .DescriptionIcon {
@@ -112,8 +111,8 @@
 
 .RowHeaderForecast {
   display: block;
-  padding-left: 20px;
 }
+
 .ForecastTitle,
 h2,
 .weather-forecast-temperature {

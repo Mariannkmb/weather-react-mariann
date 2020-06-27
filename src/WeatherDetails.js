@@ -18,9 +18,13 @@ export default function WeatherDetails(props) {
           {props.data.description}
         </div>
         <div className="Main">
-          <ul>
-            <li> Humidity: {props.data.humidity} % </li>
-            <li> Wind : {Math.round(props.data.wind * 3.6)} km/hr </li>
+          <ul class="list-unstyled">
+            <li>
+              <strong>Humidity:</strong> {props.data.humidity} %
+            </li>
+            <li>
+              <strong>Wind:</strong> {Math.round(props.data.wind * 3.6)} km/hr{" "}
+            </li>
           </ul>
         </div>
       </div>
