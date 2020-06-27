@@ -35,7 +35,7 @@ export default function WeatherForecastItems(props) {
     //   );
     // } else {
     return (
-      <div className="Temmperatures">
+      <div className="Temperatures">
         <span className="TempMaxForecast">{Math.round(max)}˚C</span>{" "}
         {Math.round(min)}˚C
       </div>

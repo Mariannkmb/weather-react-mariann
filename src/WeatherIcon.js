@@ -33,7 +33,7 @@ export default function WeatherIcon(props) {
             ? "snoopyfrezzing01.jpg"
             : codeMapping[props.code]
         }`)}
-        width="250"
+        width="240"
         alt={props.descrip}
       />
     </div>
