@@ -1,10 +1,14 @@
 .ForecastItem {
-  display: block;
+  display: inline-table;
   text-align: center;
 }
 
 .TempMaxForecast {
   color: #cb3724;
+}
+.TempMaxForecast,
+.TempMinForecast {
+  line-height: 1em;
 }
 
 .Icons {

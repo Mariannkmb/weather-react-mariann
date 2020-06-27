@@ -23,7 +23,7 @@ export default function WeatherForecastItems(props) {
     return `${monthNames[month]} ${day}`;
   }
 
-  function Temperatures(max, min) {
+  function Temperatures(temp) {
     // if (props.units === "F") {
     //   return (
     //     <div className="Temmperatures">
@@ -34,12 +34,7 @@ export default function WeatherForecastItems(props) {
     //     </div>
     //   );
     // } else {
-    return (
-      <div className="Temperatures">
-        <span className="TempMaxForecast">{Math.round(max)}˚C</span>{" "}
-        {Math.round(min)}˚C
-      </div>
-    );
+    return `${Math.round(temp)}˚C`;
     // }
   }
 
@@ -59,7 +54,13 @@ export default function WeatherForecastItems(props) {
     <div className="col ForecastItem">
       {Date(props.forecast.date)}
       {Icon(props.forecast.icon, props.forecast.description)}
-      {Temperatures(props.forecast.tempmax, props.forecast.tempmin)}
+      <span className="TempMaxForecast">
+        {Temperatures(props.forecast.tempmax)}
+        {"  "}
+      </span>
+      <span className="TempMinForecast">
+        {Temperatures(props.forecast.tempmin)}
+      </span>
     </div>
   );
 }

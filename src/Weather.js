@@ -69,7 +69,7 @@ export default function Weather(props) {
         onChange={handleCity}
       />
       <button
-        className="btn btn-outline-secondary my-2 my-sm-0"
+        className="btn btn-outline-light my-2 my-sm-0"
         type="submit"
         id="btn-search"
       >

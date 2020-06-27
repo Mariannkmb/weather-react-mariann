@@ -2,4 +2,6 @@
   border: 1px solid #59514f;
   border-style: inset;
   border-width: 2px;
+  display: inline-table;
+  max-width: 100%;
 }

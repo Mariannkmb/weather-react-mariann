@@ -12,7 +12,11 @@
 .RowHeader input,
 .RowHeader .SetDate {
   font-size: 18px;
-  text-shadow: #48484a36 1px 1px;
+  font-weight: 600;
+}
+
+.RowHeader button {
+  margin: 3px;
 }
 
 .AppTitle {
@@ -51,11 +55,11 @@
 .Main li {
   list-style: none;
   line-height: normal;
-}
-.Main {
   font-size: 20px;
   color: #48484a;
+  text-align: left;
 }
+
 .DescriptionIcon {
   display: block;
   text-align: center;
@@ -85,6 +89,7 @@
 .RowTodayForecast {
   margin-top: 28px;
   line-height: 20px;
+  text-align: center;
 }
 
 .Loader {
@@ -114,6 +119,9 @@ h2,
 .weather-forecast-temperature {
   color: #48484a;
   font-weight: bold;
+}
+.ForecastTitle {
+  text-align: left;
   padding-left: 15px;
 }
 
