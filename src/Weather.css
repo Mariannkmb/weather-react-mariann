@@ -76,7 +76,7 @@
 }
 
 .DataCeld {
-  padding: 0;
+  padding: 10px;
 }
 
 .WeatherImageCeld,
@@ -87,9 +87,10 @@
 }
 
 .RowTodayForecast {
-  margin-top: 28px;
-  line-height: 20px;
+  margin-top: 10px;
+  line-height: 18px;
   text-align: center;
+  padding: 5px;
 }
 
 .Loader {
@@ -111,7 +112,6 @@
 
 .RowHeaderForecast {
   display: block;
-  margin-top: 20px;
   padding-left: 20px;
 }
 .ForecastTitle,
@@ -135,8 +135,7 @@ h2,
   font-size: 1em;
   font-weight: bold;
   line-height: 2px;
-  margin-bottom: 25px;
-  margin-top: 10px;
+  margin: 10px;
   text-shadow: 1px 1px 1px #a5a5aa9a;
 }
 

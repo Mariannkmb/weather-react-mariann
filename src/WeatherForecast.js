@@ -43,10 +43,21 @@ export default function WeatherForecast(props) {
 
   if (submit && props.city === newCity) {
     return (
-      <div className="RowDetailForecast row mh-30">
-        {handle.map(function (items, index) {
-          return <WeatherForecastItems forecast={items} key={index} />;
-        })}
+      <div className="row RowHeaderForecast">
+        <h3 className="ForecastTitle">
+          Forecast <span className="NextDays">Next Days</span>
+        </h3>
+        <div className="RowDetailForecast row mh-30">
+          {handle.map(function (items, index) {
+            return (
+              <WeatherForecastItems
+                forecast={items}
+                key={index}
+                //   units={props.units}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   } else {

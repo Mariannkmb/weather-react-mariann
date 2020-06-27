@@ -23,11 +23,6 @@ export default function WeatherDetails(props) {
             <li> Wind : {Math.round(props.data.wind * 3.6)} km/hr </li>
           </ul>
         </div>
-        <div className="row RowHeaderForecast">
-          <h3 className="ForecastTitle">
-            Forecast <span className="NextDays">Next Days</span>
-          </h3>
-        </div>
       </div>
       <div className="col-7 WeatherImageCeld">
         <WeatherIcon

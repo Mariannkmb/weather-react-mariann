@@ -5,9 +5,9 @@ export default function LoaderSpinner() {
   return (
     <Loader
       type="Puff"
-      color="#EC6E4C"
-      height={100}
-      width={100}
+      color="#3382EA"
+      height={200}
+      width={200}
       timeout={3000}
       className="Loader"
     />
