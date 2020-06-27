@@ -1,7 +1,6 @@
 import React from "react";
 import WeatherTemperature from "./WeatherTemperature";
 import WeatherIcon from "./WeatherIcon";
-// import ReturnUnits from "./ReturnUnits";
 
 export default function WeatherDetails(props) {
   return (
@@ -9,7 +8,11 @@ export default function WeatherDetails(props) {
       <div className="col-5 DataCeld">
         <h2 className="City"> {props.data.city} </h2>
         <div className="TempCeld">
-          <WeatherTemperature temperature={props.data.temperature} />
+          <WeatherTemperature
+            temperature={props.data.temperature}
+            // setUnits={props.setUnits}
+            // units={props.units}
+          />
         </div>
         <div className="text-uppercase WeatherDescrip">
           {props.data.description}
@@ -18,7 +21,6 @@ export default function WeatherDetails(props) {
           <ul>
             <li> Humidity: {props.data.humidity} % </li>
             <li> Wind : {Math.round(props.data.wind * 3.6)} km/hr </li>
-            {/* <li> Feels Like : {Math.round(props.data.feelslike)}˚C</li> */}
           </ul>
         </div>
         <div className="row RowHeaderForecast">
