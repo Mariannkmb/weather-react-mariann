@@ -25,7 +25,7 @@ export default function WeatherForecastItems(props) {
 
   function Temperatures(max, min) {
     return (
-      <div>
+      <div className="Temmperatures">
         <span className="TempMaxForecast">{Math.round(max)}˚C</span>{" "}
         {Math.round(min)}˚C
       </div>
@@ -35,10 +35,11 @@ export default function WeatherForecastItems(props) {
   function Icon(icon, description) {
     return (
       <img
-        src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+        src={require(`../src/images/forecast/${icon}.png`)}
         alt={description}
         className="Icons"
-        width="80"
+        width="40"
+        height="40"
       />
     );
   }
