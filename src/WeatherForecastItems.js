@@ -24,18 +24,11 @@ export default function WeatherForecastItems(props) {
   }
 
   function Temperatures(temp) {
-    // if (props.units === "F") {
-    //   return (
-    //     <div className="Temmperatures">
-    //       <span className="TempMaxForecast">
-    //         {Math.round(max * (9 / 5) + 32)}˚F
-    //       </span>{" "}
-    //       {Math.round(min * (9 / 5) + 32)}˚F
-    //     </div>
-    //   );
-    // } else {
-    return `${Math.round(temp)}˚C`;
-    // }
+    if (props.units === "F") {
+      return `${Math.round(temp * (9 / 5) + 32)}˚F`;
+    } else {
+      return `${Math.round(temp)}˚C`;
+    }
   }
 
   function Icon(icon, description) {

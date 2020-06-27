@@ -6,6 +6,7 @@ export default function WeatherForecast(props) {
   const [submit, setSubmit] = useState(false);
   const [handle, setHandle] = useState(null);
   const [newCity, setNewCity] = useState(null);
+  var units = props.units;
 
   function handleForecast(response) {
     let forecast = null;
@@ -41,7 +42,7 @@ export default function WeatherForecast(props) {
     setSubmit(true);
   }
 
-  if (submit && props.city === newCity) {
+  if (submit && props.city === newCity && units === props.units) {
     return (
       <div className="row RowHeaderForecast">
         <h3 className="ForecastTitle">
@@ -53,7 +54,7 @@ export default function WeatherForecast(props) {
               <WeatherForecastItems
                 forecast={items}
                 key={index}
-                //   units={props.units}
+                units={props.units}
               />
             );
           })}

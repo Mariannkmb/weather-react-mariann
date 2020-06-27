@@ -11,7 +11,7 @@ export default function Weather(props) {
   const pattern = date.compile(" ddd, MMM DD YYYY HH:mm");
   const [data, setData] = useState({ submit: false });
   const [city, setCity] = useState(props.defaultCity);
-  //   const [units, setUnits] = useState("C");
+  const [units, setUnits] = useState("C");
   let apiKey = "b5de5ed43000236f70d3412957f9f340";
 
   function getData(response) {
@@ -92,14 +92,8 @@ export default function Weather(props) {
       <div className="WeatherAppWrapper">
         <h1 className="AppTitle">Snoopy Weather</h1>
         <div className="row RowHeader">{headerForm}</div>
-        <WeatherDetails
-          data={data}
-          // setUnits={setUnits}
-        />
-        <WeatherForecast
-          city={data.city}
-          // units={units}
-        />
+        <WeatherDetails data={data} setUnits={setUnits} units={units} />
+        <WeatherForecast city={data.city} units={units} />
       </div>
     );
   } else {

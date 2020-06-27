@@ -10,8 +10,8 @@ export default function WeatherDetails(props) {
         <div className="TempCeld">
           <WeatherTemperature
             temperature={props.data.temperature}
-            // setUnits={props.setUnits}
-            // units={props.units}
+            setUnits={props.setUnits}
+            units={props.units}
           />
         </div>
         <div className="text-uppercase WeatherDescrip">

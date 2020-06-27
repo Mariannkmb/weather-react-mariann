@@ -1,25 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./WeatherTemperature.css";
 
 export default function WeatherTemperature(props) {
-  const [units, setUnits] = useState("C");
+  function ShowCelsius(event) {
+    event.preventDefault();
+    props.setUnits("C");
+  }
 
   function ShowFahrenheiht(event) {
     event.preventDefault();
-    // props.setUnits("F");
-    setUnits("F");
-  }
-  function ShowCelsius(event) {
-    event.preventDefault();
-    // props.setUnits("C");
-    setUnits("C");
+    props.setUnits("F");
   }
 
   return (
     <div>
       <h2>
         <span className="Temperature">
-          {units === "C"
+          {props.units === "C"
             ? `${props.temperature}˚C`
             : `${Math.round(props.temperature * (9 / 5) + 32)}˚F`}
         </span>
@@ -27,7 +24,7 @@ export default function WeatherTemperature(props) {
       <h5 className="ChangeMetric">
         <a
           href="/"
-          className={units === "C" ? "active" : "inactive"}
+          className={props.units === "C" ? "active" : "inactive"}
           onClick={ShowCelsius}
         >
           ˚C
@@ -35,7 +32,7 @@ export default function WeatherTemperature(props) {
         {" | "}
         <a
           href="/"
-          className={units === "F" ? "active" : "inactive"}
+          className={props.units === "F" ? "active" : "inactive"}
           onClick={ShowFahrenheiht}
         >
           ˚F
