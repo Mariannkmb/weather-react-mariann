@@ -5,7 +5,7 @@ import WeatherIcon from "./WeatherIcon";
 export default function WeatherDetails(props) {
   return (
     <div className="row RowTodayForecast">
-      <div className="col-5 DataCeld">
+      <div className="col-md-5 DataCeld">
         <h2 className="City"> {props.data.city} </h2>
         <div className="TempCeld">
           <WeatherTemperature
@@ -20,15 +20,25 @@ export default function WeatherDetails(props) {
         <div className="Main">
           <ul class="list-unstyled">
             <li>
-              <strong>Humidity:</strong> {props.data.humidity} %
+              Humidity:<strong>{props.data.humidity} %</strong>
             </li>
             <li>
-              <strong>Wind:</strong> {Math.round(props.data.wind * 3.6)} km/hr{" "}
+              Wind:
+              <strong>{Math.round(props.data.wind * 3.6)} km/hr </strong>
+            </li>
+            <li>
+              Feels Like:
+              <strong>
+                {" "}
+                {props.units === "C"
+                  ? `${Math.round(props.data.feelslike)}˚C`
+                  : `${Math.round(props.data.feelslike * (9 / 5) + 32)}˚F`}
+              </strong>
             </li>
           </ul>
         </div>
       </div>
-      <div className="col-7 WeatherImageCeld">
+      <div className="col-md-7 WeatherImageCeld">
         <WeatherIcon
           code={props.data.icon}
           descrip={props.data.description}
