@@ -22,21 +22,23 @@ export default function WeatherTemperature(props) {
         </span>
       </h2>
       <h5 className="ChangeMetric">
-        <a
-          href="/"
-          className={props.units === "C" ? "active" : "inactive"}
+        <button
+          type="button"
+          className="btn-sm btn-primary"
+          aria-pressed="true"
           onClick={ShowCelsius}
         >
           ˚C
-        </a>
-        {" | "}
-        <a
-          href="/"
-          className={props.units === "F" ? "active" : "inactive"}
+        </button>
+        {"  "}
+        <button
+          type="button"
+          className="btn-sm btn-primary"
+          aria-pressed="true"
           onClick={ShowFahrenheiht}
         >
           ˚F
-        </a>
+        </button>
       </h5>
     </div>
   );

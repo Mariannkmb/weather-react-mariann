@@ -20,16 +20,16 @@ export default function WeatherDetails(props) {
         <div className="Main">
           <ul className="list-unstyled">
             <li>
-              Humidity:<strong>{props.data.humidity} %</strong>
+              Humidity:<strong> {props.data.humidity} %</strong>
             </li>
             <li>
               Wind:
-              <strong>{Math.round(props.data.wind * 3.6)} km/hr </strong>
+              <strong> {Math.round(props.data.wind * 3.6)} km/hr </strong>
             </li>
             <li>
               Feels Like:
               <strong>
-                {" "}
+                {"   "}
                 {props.units === "C"
                   ? `${Math.round(props.data.feelslike)}˚C`
                   : `${Math.round(props.data.feelslike * (9 / 5) + 32)}˚F`}

@@ -1,19 +1,26 @@
-.ChangeMetric {
+/* .ChangeMetric {
   display: block;
-  font-size: 22px;
-  font-weight: bold;
-  white-space: nowrap;
-}
 
-.ChangeMetric .active {
+  white-space: nowrap;
+} */
+
+/* .ChangeMetric .active {
   color: #48484a;
   cursor: default;
   display: inline-block;
 }
 .ChangeMetric .active:hover {
   text-decoration: none;
-}
+} */
 
 .Temperature {
   font-size: 40px;
+}
+
+.btn-primary {
+  background-color: #3382ea;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  width: 40px;
 }

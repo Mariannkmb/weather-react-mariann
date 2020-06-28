@@ -59,6 +59,10 @@
   text-align: center;
 }
 
+.Main strong {
+  color: #3382ea;
+}
+
 .DescriptionIcon {
   display: block;
   text-align: center;
@@ -76,12 +80,6 @@
 
 .DataCeld {
   padding-top: 5px;
-}
-
-.WeatherImageCeld {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
 }
 
 .WeatherImageCeld,
