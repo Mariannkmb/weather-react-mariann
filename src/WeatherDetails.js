@@ -5,7 +5,7 @@ import WeatherIcon from "./WeatherIcon";
 export default function WeatherDetails(props) {
   return (
     <div className="row RowTodayForecast">
-      <div className="col-md-5 DataCeld">
+      <div className="col-5 col-md-5 DataCeld mx-auto my-auto">
         <h2 className="City"> {props.data.city} </h2>
         <div className="TempCeld">
           <WeatherTemperature
@@ -14,9 +14,7 @@ export default function WeatherDetails(props) {
             units={props.units}
           />
         </div>
-        <div className="text-uppercase WeatherDescrip">
-          {props.data.description}
-        </div>
+
         <div className="Main">
           <ul className="list-unstyled">
             <li>
@@ -26,24 +24,22 @@ export default function WeatherDetails(props) {
               Wind:
               <strong> {Math.round(props.data.wind * 3.6)} km/hr </strong>
             </li>
-            <li>
-              Feels Like:
-              <strong>
-                {"   "}
-                {props.units === "C"
-                  ? `${Math.round(props.data.feelslike)}˚C`
-                  : `${Math.round(props.data.feelslike * (9 / 5) + 32)}˚F`}
-              </strong>
-            </li>
           </ul>
         </div>
       </div>
-      <div className="col-md-7 WeatherImageCeld d-flex">
-        <WeatherIcon
-          code={props.data.icon}
-          descrip={props.data.description}
-          temp={props.data.temperature}
-        />
+      <div className="col-7 col-md-7 ">
+        <div className="row WeatherImageCeld d-flex">
+          <WeatherIcon
+            code={props.data.icon}
+            descrip={props.data.description}
+            temp={props.data.temperature}
+          />
+        </div>
+        <div className="row">
+          <div className="text-uppercase row WeatherDescrip">
+            {props.data.description}
+          </div>
+        </div>
       </div>
     </div>
   );

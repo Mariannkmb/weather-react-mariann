@@ -45,11 +45,12 @@
   text-align: center;
 }
 .WeatherDescrip {
-  text-align: center;
-  padding: 12px;
+  display: block;
+  padding-top: 5px;
   font-size: 24px;
   font-weight: bolder;
-  margin-bottom: 5px;
+  white-space: nowrap;
+  margin: 0 auto;
 }
 
 .Main li {
@@ -80,6 +81,7 @@
 
 .DataCeld {
   padding-top: 5px;
+  line-height: 0em;
 }
 
 .WeatherImageCeld,
@@ -91,7 +93,6 @@
 
 .RowTodayForecast {
   margin-top: 5px;
-  line-height: 18px;
   text-align: center;
   padding: 5px;
 }
@@ -126,7 +127,6 @@ h2,
 .ForecastTitle {
   text-align: left;
   padding-left: 15px;
-  margin-top: 5px;
 }
 
 .NextDays {
@@ -149,4 +149,10 @@ h2,
   text-align: center;
   width: 100%;
   white-space: nowrap;
+}
+.WeatherImageCeld img {
+  border: 2px solid #59514f;
+  border-style: inset;
+  border-width: 2px;
+  max-width: 100%;
 }

@@ -1,7 +1,8 @@
 .ForecastItem {
-  display: inline;
+  display: block;
   text-align: center;
   line-height: 1em;
+  white-space: nowrap;
 }
 
 .TempMaxForecast {
@@ -9,7 +10,6 @@
 }
 
 .Icons {
-  border-radius: 50px;
   display: block;
   margin: 10px auto;
 }

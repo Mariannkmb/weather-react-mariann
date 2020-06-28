@@ -1,5 +1,4 @@
 import React from "react";
-import "./WeatherIcon.css";
 
 export default function WeatherIcon(props) {
   const codeMapping = {
@@ -32,8 +31,8 @@ export default function WeatherIcon(props) {
           ? "snoopyfrezzing01.jpg"
           : codeMapping[props.code]
       }`)}
-      className="mx-auto my-auto"
-      width="300"
+      className="mx-auto my-auto SnoopyIcons"
+      width="270"
       alt={props.descrip}
     />
   );
