@@ -24,18 +24,17 @@ export default function WeatherIcon(props) {
   };
 
   return (
-    <div className="SnoopyImages">
-      <img
-        src={require(`../src/images/${
-          props.temp >= 37
-            ? "snoopyhot01.jpg"
-            : props.temp < 0
-            ? "snoopyfrezzing01.jpg"
-            : codeMapping[props.code]
-        }`)}
-        width="300"
-        alt={props.descrip}
-      />
-    </div>
+    <img
+      src={require(`../src/images/${
+        props.temp >= 37
+          ? "snoopyhot01.jpg"
+          : props.temp < 0
+          ? "snoopyfrezzing01.jpg"
+          : codeMapping[props.code]
+      }`)}
+      className="mx-auto my-auto"
+      width="300"
+      alt={props.descrip}
+    />
   );
 }

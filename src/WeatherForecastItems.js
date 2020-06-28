@@ -36,7 +36,7 @@ export default function WeatherForecastItems(props) {
       <img
         src={require(`../src/images/forecast/${icon}.png`)}
         alt={description}
-        className="Icons"
+        className="Icons rounded-circle"
         width="40"
         height="40"
       />

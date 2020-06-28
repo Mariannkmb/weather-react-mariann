@@ -18,7 +18,7 @@ export default function WeatherDetails(props) {
           {props.data.description}
         </div>
         <div className="Main">
-          <ul class="list-unstyled">
+          <ul className="list-unstyled">
             <li>
               Humidity:<strong>{props.data.humidity} %</strong>
             </li>
@@ -38,7 +38,7 @@ export default function WeatherDetails(props) {
           </ul>
         </div>
       </div>
-      <div className="col-md-7 WeatherImageCeld">
+      <div className="col-md-7 WeatherImageCeld d-flex">
         <WeatherIcon
           code={props.data.icon}
           descrip={props.data.description}
