@@ -27,7 +27,7 @@ export default function WeatherDetails(props) {
           </ul>
         </div>
       </div>
-      <div className="col-7 ">
+      <div className="col-7">
         <div className="row WeatherImageCeld d-flex">
           <WeatherIcon
             code={props.data.icon}

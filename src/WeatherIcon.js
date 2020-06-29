@@ -6,7 +6,7 @@ export default function WeatherIcon(props) {
     "01n": "snoopyclearnight02.gif",
     "02d": "snoopyclearsky04.gif",
     "02n": "snoopyfewclouds02.jpg",
-    "03d": "snoopyfewclouds03.jpg",
+    "03d": "snoopyfewclouds03.gif",
     "03n": "snoopyclearsky03.jpg",
     "04d": "snoopybrokenclouds01.gif",
     "04n": "snoopybrokenclouds02.gif",
@@ -32,7 +32,7 @@ export default function WeatherIcon(props) {
           : codeMapping[props.code]
       }`)}
       className="mx-auto my-auto SnoopyIcons"
-      width="270"
+      max-width="236"
       alt={props.descrip}
     />
   );
