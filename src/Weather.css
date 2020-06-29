@@ -38,13 +38,23 @@
   color: #ffffff;
 }
 
+@media (min-width: 320px) and (max-width: 576px) {
+  h2.City {
+    font-size: 28px;
+  }
+  div.WeatherDescrip {
+    font-size: 20px;
+  }
+}
+
 .City {
   font-family: "Bangers", sans-serif;
   margin-bottom: 0px;
   text-align: center;
-  font-size: 2.4rem;
+  font-size: 45px;
   margin: 0 auto;
 }
+
 .WeatherDescrip {
   display: block;
   padding-top: 5px;
