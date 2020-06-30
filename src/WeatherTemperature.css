@@ -1,18 +1,3 @@
-/* .ChangeMetric {
-  display: block;
-
-  white-space: nowrap;
-} */
-
-/* .ChangeMetric .active {
-  color: #48484a;
-  cursor: default;
-  display: inline-block;
-}
-.ChangeMetric .active:hover {
-  text-decoration: none;
-} */
-
 .Temperature {
   font-size: 40px;
 }

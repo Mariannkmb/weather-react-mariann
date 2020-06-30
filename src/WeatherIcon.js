@@ -32,7 +32,6 @@ export default function WeatherIcon(props) {
           : codeMapping[props.code]
       }`)}
       className="mx-auto my-auto SnoopyIcons"
-      max-width="236"
       alt={props.descrip}
     />
   );

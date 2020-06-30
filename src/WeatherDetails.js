@@ -3,11 +3,13 @@ import WeatherTemperature from "./WeatherTemperature";
 import WeatherIcon from "./WeatherIcon";
 
 export default function WeatherDetails(props) {
+  const { getName } = require("country-list");
+
   return (
     <div className="row RowTodayForecast">
       <div className="col-5 DataCeld mx-auto my-auto">
         <h2 className="City"> {props.data.city} </h2>
-        <h2 className="Country">{props.data.countryCode}</h2>
+        <h2 className="Country">{getName(props.data.countryCode)}</h2>
         <div className="TempCeld">
           <WeatherTemperature
             temperature={props.data.temperature}
