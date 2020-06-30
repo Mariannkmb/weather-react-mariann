@@ -24,6 +24,7 @@ export default function Weather(props) {
       wind: response.data.wind.speed,
       icon: response.data.weather[0].icon,
       city: response.data.name,
+      countryCode: response.data.sys.country,
     });
   }
 
@@ -83,7 +84,7 @@ export default function Weather(props) {
       >
         Current
       </button>
-      <div className="SetDate mt-6"> {date.format(now, pattern)}</div>
+      <div className="SetDate"> {date.format(now, pattern)}</div>
     </form>
   );
 

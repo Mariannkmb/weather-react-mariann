@@ -7,6 +7,7 @@ export default function WeatherDetails(props) {
     <div className="row RowTodayForecast">
       <div className="col-5 DataCeld mx-auto my-auto">
         <h2 className="City"> {props.data.city} </h2>
+        <h2 className="Country">{props.data.countryCode}</h2>
         <div className="TempCeld">
           <WeatherTemperature
             temperature={props.data.temperature}
@@ -14,7 +15,6 @@ export default function WeatherDetails(props) {
             units={props.units}
           />
         </div>
-
         <div className="Main">
           <ul className="list-unstyled">
             <li>

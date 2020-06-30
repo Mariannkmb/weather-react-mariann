@@ -1,12 +1,25 @@
+@media (min-width: 320px) and (max-width: 576px) {
+  span.TempMaxForecast,
+  span.TempMinForecast {
+    display: block;
+    text-align: center;
+  }
+}
+
 .ForecastItem {
   display: block;
   text-align: center;
+  padding: 0;
   line-height: 1em;
   white-space: nowrap;
 }
 
 .TempMaxForecast {
   color: #cb3724;
+  padding: 0px 5px;
+}
+.TempMinForecast {
+  padding: 0px 5px;
 }
 
 .Icons {

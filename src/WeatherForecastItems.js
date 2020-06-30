@@ -47,13 +47,14 @@ export default function WeatherForecastItems(props) {
     <div className="col ForecastItem">
       {Date(props.forecast.date)}
       {Icon(props.forecast.icon, props.forecast.description)}
-      <span className="TempMaxForecast">
-        {Temperatures(props.forecast.tempmax)}
-        {"  "}
-      </span>
-      <span className="TempMinForecast">
-        {Temperatures(props.forecast.tempmin)}
-      </span>
+      <div className="ForecastTemperatures">
+        <span className="TempMaxForecast">
+          {Temperatures(props.forecast.tempmax)}
+        </span>
+        <span className="TempMinForecast">
+          {Temperatures(props.forecast.tempmin)}
+        </span>
+      </div>
     </div>
   );
 }

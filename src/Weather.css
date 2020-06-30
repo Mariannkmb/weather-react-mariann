@@ -1,3 +1,16 @@
+@media (min-width: 320px) and (max-width: 576px) {
+  h2.City {
+    font-size: 28px;
+  }
+  div.WeatherDescrip {
+    font-size: 20px;
+  }
+  div.SetDate {
+    width: 100px;
+    text-align: center;
+  }
+}
+
 .WeatherAppWrapper {
   font-family: "Patrick Hand", cursive;
   text-shadow: #48484a36 1px 1px;
@@ -36,15 +49,6 @@
   margin-left: 10px;
   font-size: 16px;
   color: #ffffff;
-}
-
-@media (min-width: 320px) and (max-width: 576px) {
-  h2.City {
-    font-size: 28px;
-  }
-  div.WeatherDescrip {
-    font-size: 20px;
-  }
 }
 
 .City {
@@ -103,7 +107,7 @@
 }
 
 .RowTodayForecast {
-  margin-top: 5px;
+  margin-top: 5px auto 0px;
   text-align: center;
   padding: 5px;
 }
@@ -150,7 +154,7 @@ h2,
   font-size: 1em;
   font-weight: bold;
   line-height: 2px;
-  margin: 10px;
+  margin: 5px;
   text-shadow: 1px 1px 1px #a5a5aa9a;
 }
 
