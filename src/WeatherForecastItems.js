@@ -18,7 +18,7 @@ export default function WeatherForecastItems(props) {
   ];
 
   function Date(date) {
-    var month = date.substring(6, 7) - 1;
+    var month = date.substring(5, 7) - 1;
     var day = date.substring(8, 10);
     return `${monthNames[month]} ${day}`;
   }
