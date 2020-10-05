@@ -66,9 +66,8 @@
 .WeatherDescrip {
   display: block;
   padding-top: 5px;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bolder;
-  white-space: nowrap;
   margin: 0 auto;
 }
 
