@@ -5,6 +5,7 @@ import date from "date-and-time";
 import WeatherDetails from "./WeatherDetails";
 import WeatherForecast from "./WeatherForecast";
 import LoaderSpinner from "./LoaderSpinner";
+import SoundToggle from "./SoundToggle";
 
 export default function Weather(props) {
   const now = new Date();
@@ -21,6 +22,7 @@ export default function Weather(props) {
       humidity: response.data.main.humidity,
       feelslike: response.data.main.feels_like,
       description: response.data.weather[0].description,
+      weatherId: response.data.weather[0].id,
       wind: response.data.wind.speed,
       icon: response.data.weather[0].icon,
       city: response.data.name,
@@ -84,6 +86,16 @@ export default function Weather(props) {
       >
         Current
       </button>
+      {data.submit && (
+        <SoundToggle
+          weather={{
+            id: data.weatherId,
+            icon: data.icon,
+            wind: data.wind,
+            temp: data.temperature,
+          }}
+        />
+      )}
       <div className="SetDate"> {date.format(now, pattern)}</div>
     </form>
   );

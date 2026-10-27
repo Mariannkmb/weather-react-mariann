@@ -36,6 +36,23 @@
   margin: 3px;
 }
 
+.btn-sound {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-sound svg {
+  vertical-align: -3px;
+}
+
+.btn-sound.active {
+  background-color: #f8f9fa;
+  color: #0c0c0c;
+}
+
+
+
 .AppTitle {
   font-family: "Bangers", sans-serif;
   color: #010101;
