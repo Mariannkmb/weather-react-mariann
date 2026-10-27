@@ -195,3 +195,32 @@ h2,
   border-width: 2px;
   max-width: 100%;
 }
+
+/* hidden test mode (?scene=10n) */
+.TestBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  background: #fff3cd;
+  border: 1px dashed #c9a227;
+  font-size: 17px;
+}
+
+.TestBar button {
+  border: 1px solid #59514f;
+  background: #fff;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 16px;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.TestBar a {
+  font-size: 14px;
+  color: #6c5b00;
+}

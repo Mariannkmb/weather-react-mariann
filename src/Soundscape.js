@@ -597,8 +597,14 @@ export function sceneFor(w) {
 
 // Name shown on the sound button's tooltip
 export function sceneLabel(w) {
-  const key = sceneFor(w);
-  return SCENES[key].label;
+  return SCENES[sceneFor(w)].label;
+}
+
+// Test mode (?scene=10n): every scene, in the order of the pictures
+export const TEST_SCENES = ["01d", "01n", "02d", "02n", "03d", "03n", "04d", "04n", "09d", "09n", "10d", "10n", "11d", "11n", "13d", "13n", "50d", "50n", "hot", "freezing"];
+
+export function testSceneLabel(key) {
+  return SCENES[key === "hot" ? "too hot" : key].label;
 }
 
 const SCENES = {
