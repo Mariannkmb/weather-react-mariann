@@ -35,6 +35,8 @@ export default function WeatherDetails(props) {
             code={props.data.icon}
             descrip={props.data.description}
             temp={props.data.temperature}
+            wind={props.data.wind}
+            scene={props.data.scene}
           />
         </div>
         <div className="row-sm">

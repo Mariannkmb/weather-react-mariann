@@ -1,7 +1,6 @@
 // Weather sounds that follow the Snoopy picture on screen.
-// The app picks a picture from the weather code and temperature (WeatherIcon.js);
-// sceneFor() uses exactly the same rule, so the sound always matches what Snoopy
-// is doing: typing on his doghouse, flying as the Flying Ace, sleeping in the
+// sceneFor() decides which picture is shown (WeatherIcon.js uses it too), so the
+// sound always matches what Snoopy is doing: typing on his doghouse, flying as the Flying Ace, sleeping in the
 // rain, dancing with Woodstock...
 // Everything is synthesised with the Web Audio API: no audio files, nothing to
 // license, and all tunes are original. startScene() returns a stop() function.
@@ -481,6 +480,45 @@ const FX = {
     o.start(t);
     o.stop(t + 1);
   },
+  // a strong gust that howls past and fades
+  gust(ctx, out, buf, t) {
+    const len = rand(2, 3.5);
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    src.loop = true;
+    const bp = filter(ctx, "bandpass", 300, 1.2);
+    bp.frequency.setValueAtTime(rand(250, 350), t);
+    bp.frequency.linearRampToValueAtTime(rand(700, 1000), t + len * 0.45);
+    bp.frequency.linearRampToValueAtTime(rand(300, 400), t + len);
+    const g = gain(ctx, 0);
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(0.16, t + len * 0.4);
+    g.gain.linearRampToValueAtTime(0, t + len);
+    src.connect(bp).connect(g).connect(out);
+    src.start(t, rand(0, 1));
+    src.stop(t + len + 0.05);
+  },
+  // leaves and branches rattling
+  rustle(ctx, out, buf, t) {
+    const count = Math.floor(rand(8, 16));
+    for (let i = 0; i < count; i++) {
+      burst(ctx, out, buf, t + i * rand(0.02, 0.06), { bp: rand(2500, 5000), q: 2, level: rand(0.015, 0.04), decay: 0.03 });
+    }
+  },
+  // party horn: paper unrolls with a buzzy toot
+  partyHorn(ctx, out, t) {
+    const f = rand(380, 520);
+    tone(ctx, out, t, { type: "sawtooth", from: f * 0.85, to: f, len: rand(0.5, 0.8), level: 0.035, lp: 2200, q: 3, wah: 3600, glide: 0.2, vibrato: 6, vibratoRate: 14, attack: 0.02, release: 0.08 });
+  },
+  // fireworks far away: a whistle up, a soft boom, then crackles
+  firework(ctx, out, buf, t) {
+    const up = rand(0.6, 1);
+    tone(ctx, out, t, { from: rand(900, 1200), to: rand(2400, 3200), len: up, level: 0.012, glide: 1, attack: 0.05, release: 0.05 });
+    burst(ctx, out, buf, t + up, { lp: 180, level: 0.22, attack: 0.005, decay: 0.7 });
+    for (let i = 0; i < 14; i++) {
+      burst(ctx, out, buf, t + up + 0.15 + rand(0, 0.9), { bp: rand(3000, 6000), q: 3, level: rand(0.01, 0.03), decay: 0.02 });
+    }
+  },
   cicadas(ctx, out, buf) {
     const g = gain(ctx, 0.012);
     lfo(ctx, 38, 0.012, g.gain);
@@ -574,6 +612,69 @@ const TUNES = {
       [[0, "F6"], [0.5, "D6"], [1, "Bb5"], [2, "C6"], [2.5, "D6"], [3, "Eb6"]],
     ],
   },
+  // a quiet night at the doghouse: soft piano in C (C - Am - F - G)
+  quietNight: {
+    bpm: 66,
+    chords: [
+      ["C3", "G3", "E4"],
+      ["A2", "E3", "C4"],
+      ["F2", "C3", "A3"],
+      ["G2", "D3", "B3"],
+    ],
+    melody: [
+      [[0, "E5"], [1.5, "G5"], [3, "E5"]],
+      [[0, "C5"], [2, "E5"]],
+      [[0, "F5"], [1, "E5"], [2, "C5"]],
+      [[0, "D5", 0.8], [3, "B4", 0.6]],
+    ],
+  },
+  // "Jingle Bells" (James Lord Pierpont, 1857, public domain), chorus in F
+  jingle: {
+    bpm: 150,
+    bars: [
+      [[0, "A5"], [1, "A5"], [2, "A5"]],
+      [[0, "A5"], [1, "A5"], [2, "A5"]],
+      [[0, "A5"], [1, "C6"], [2, "F5"], [3.5, "G5"]],
+      [[0, "A5"]],
+      [[0, "Bb5"], [1, "Bb5"], [2, "Bb5"], [3.5, "Bb5"]],
+      [[0, "Bb5"], [1, "A5"], [2, "A5"], [3, "A5"], [3.5, "A5"]],
+      [[0, "A5"], [1, "G5"], [2, "G5"], [3, "A5"]],
+      [[0, "G5"], [2, "C6"]],
+      [[0, "A5"], [1, "A5"], [2, "A5"]],
+      [[0, "A5"], [1, "A5"], [2, "A5"]],
+      [[0, "A5"], [1, "C6"], [2, "F5"], [3.5, "G5"]],
+      [[0, "A5"]],
+      [[0, "Bb5"], [1, "Bb5"], [2, "Bb5"], [3.5, "Bb5"]],
+      [[0, "Bb5"], [1, "A5"], [2, "A5"], [3, "A5"], [3.5, "A5"]],
+      [[0, "C6"], [1, "C6"], [2, "Bb5"], [3, "G5"]],
+      [[0, "F5"]],
+    ],
+    bass: ["F3", "F3", "F3", "F3", "Bb2", "F3", "G2", "C3", "F3", "F3", "F3", "F3", "Bb2", "F3", "C3", "F3"],
+  },
+  // "Auld Lang Syne" (traditional, public domain) in F
+  auldLangSyne: {
+    bpm: 80,
+    bars: [
+      [[0, "F5"], [1.5, "F5"], [2, "F5"], [3, "A5"]],
+      [[0, "G5"], [1.5, "F5"], [2, "G5"], [3, "A5"]],
+      [[0, "F5"], [1.5, "F5"], [2, "A5"], [3, "C6"]],
+      [[0, "D6", 0.9], [3, "D6"]],
+      [[0, "C6"], [1.5, "A5"], [2, "A5"], [3, "F5"]],
+      [[0, "G5"], [1.5, "F5"], [2, "G5"], [3, "A5"]],
+      [[0, "F5"], [1.5, "D5"], [2, "D5"], [3, "C5"]],
+      [[0, "F5", 0.9], [3, "C5"]],
+    ],
+    chords: [
+      ["F3", "A3", "C4"],
+      ["C3", "G3", "Bb3"],
+      ["F3", "A3", "C4"],
+      ["Bb2", "F3", "D4"],
+      ["F3", "A3", "C4"],
+      ["C3", "G3", "Bb3"],
+      ["Bb2", "F3", "D4"],
+      ["F3", "A3", "C4"],
+    ],
+  },
   // lazy steel drum for a too-hot day
   hot: {
     bpm: 84,
@@ -588,10 +689,28 @@ const TUNES = {
 
 // ---- picture -> scene -------------------------------------------------------
 
-// Same rule as WeatherIcon.js: very hot or freezing pictures first, then the icon.
+// Which Snoopy picture (and sound) to show. WeatherIcon.js uses this too.
+// Order: the test mode, the holidays (visitor's own date), very hot or freezing,
+// a strong wind on a dry day, and then the weather icon.
+const WINDY = 10; // m/s, about 36 km/h
+const DRY = ["01", "02", "03", "04", "50"];
+
+export function holidayFor(date) {
+  const d = date || new Date();
+  const month = d.getMonth() + 1;
+  const day = d.getDate();
+  if (month === 12 && day >= 20 && day <= 26) return "christmas";
+  if ((month === 12 && day === 31) || (month === 1 && day === 1)) return "newyear";
+  return null;
+}
+
 export function sceneFor(w) {
-  if ((w.temp || 0) >= 37) return "too hot";
+  if (w.scene && SCENES[w.scene]) return w.scene;
+  const holiday = holidayFor(w.date);
+  if (holiday) return holiday;
+  if ((w.temp || 0) >= 37) return "hot";
   if ((w.temp || 0) < 0) return "freezing";
+  if ((w.wind || 0) > WINDY && DRY.indexOf((w.icon || "").slice(0, 2)) >= 0) return "wind";
   return SCENES[w.icon] ? w.icon : "01d";
 }
 
@@ -601,19 +720,19 @@ export function sceneLabel(w) {
 }
 
 // Test mode (?scene=10n): every scene, in the order of the pictures
-export const TEST_SCENES = ["01d", "01n", "02d", "02n", "03d", "03n", "04d", "04n", "09d", "09n", "10d", "10n", "11d", "11n", "13d", "13n", "50d", "50n", "hot", "freezing"];
+export const TEST_SCENES = ["01d", "01n", "02d", "02n", "03d", "03n", "04d", "04n", "09d", "09n", "10d", "10n", "11d", "11n", "13d", "13n", "50d", "50n", "hot", "freezing", "wind", "christmas", "newyear"];
 
 export function testSceneLabel(key) {
-  return SCENES[key === "hot" ? "too hot" : key].label;
+  return SCENES[key].label;
 }
 
 const SCENES = {
   "01d": { label: "Snoopy typing on his doghouse" },
   "01n": { label: "Dancing under the stars with Woodstock" },
   "02d": { label: "Dancing with Linus and Lucy" },
-  "02n": { label: "Woodstock and friends at night" },
+  "02n": { label: "Charlie Brown and Snoopy on a quiet night" },
   "03d": { label: "Picnic in the park" },
-  "03n": { label: "Goodnight, Snoopy" },
+  "03n": { label: "Goodnight under the big moon" },
   "04d": { label: "The Flying Ace takes off" },
   "04n": { label: "The Flying Ace sneaks through the night" },
   "09d": { label: "Singing in the rain with Woodstock" },
@@ -626,8 +745,11 @@ const SCENES = {
   "13n": { label: "Lucy is not amused by the snow" },
   "50d": { label: "Into the clouds" },
   "50n": { label: "Lost in the fog" },
-  "too hot": { label: "It's too hot! Whew!" },
-  freezing: { label: "It's freezing! Brrr" },
+  hot: { label: "Sunbathing on the doghouse with Woodstock" },
+  freezing: { label: "Brrr! Snoopy at the frosty window" },
+  wind: { label: "Holding on in the wind with Woodstock" },
+  christmas: { label: "Merry Christmas from Snoopy and Woodstock" },
+  newyear: { label: "Happy New Year!" },
 };
 
 export function startScene(ctx, destination, w, offlineDuration) {
@@ -644,7 +766,7 @@ export function startScene(ctx, destination, w, offlineDuration) {
   const windy = Math.min(1, (w.wind || 0) / 12);
   const scene = sceneFor(w);
   // quieter scenes get a boost so switching cities doesn't need a volume change
-  const LEVEL = { "01d": 2.2, "02n": 3.2, "13n": 1.8, freezing: 2.1, "10d": 1.2 };
+  const LEVEL = { "01d": 2.2, "02n": 1.6, "13n": 1.8, freezing: 2.1, "10d": 1.2, wind: 1.5, christmas: 0.7 };
   master.gain.linearRampToValueAtTime(0.8 * (LEVEL[scene] || 1), t0 + 1.2);
   const every = (a, b, fn, first) => sched.every(a, b, fn, first);
 
@@ -686,13 +808,17 @@ export function startScene(ctx, destination, w, offlineDuration) {
       break;
     }
 
-    // Snoopy with lots of Woodstocks on a hill at night
-    case "02n":
-      every(1.2, 2.6, (t) => FX.woodstock(ctx, out, t), 0.5);
-      every(1.6, 3.2, (t) => FX.woodstock(ctx, out, t), 1.2);
+    // Charlie Brown sits with Snoopy by the doghouse at night
+    case "02n": {
+      const tune = TUNES.quietNight;
+      const beat = 60 / tune.bpm;
+      sched.bars(beat * 4, (t, i) => {
+        tune.chords[i % 4].forEach((note, k) => play(ctx, out, "piano", t + k * beat * 0.5, note, 0.5));
+        bar(ctx, out, "piano", t, beat, tune.melody[i % 4].map(([b, note, v]) => [b, note, v || 0.7]));
+      });
       every(1, 2.2, (t) => FX.cricket(ctx, out, t), 0.3);
-      every(5, 9, (t) => play(ctx, out, "glock", t, pick(["C7", "F7", "A6"]), 0.3), 3);
       break;
+    }
 
     // picnic on the grass with drinks
     case "03d": {
@@ -709,7 +835,7 @@ export function startScene(ctx, destination, w, offlineDuration) {
       break;
     }
 
-    // Lucy and Snoopy by the doghouse under the moon
+    // Snoopy and Charlie Brown in silhouette under a huge moon
     case "03n": {
       const tune = TUNES.lullaby;
       const beat = 60 / tune.bpm;
@@ -826,22 +952,63 @@ export function startScene(ctx, destination, w, offlineDuration) {
       FX.wind(ctx, out, buf, 0.12, { lowpass: 600, freq: 250 });
       break;
 
-    // "It's too hot!" - "Whew!"
-    case "too hot": {
+    // Snoopy and Woodstock sunbathing on the doghouse roof
+    case "hot": {
       const tune = TUNES.hot;
       const beat = 60 / tune.bpm;
       sched.bars(beat * 4, (t, i) => bar(ctx, out, "steelDrum", t, beat, tune.melody[i % 4]));
       FX.cicadas(ctx, out, buf);
       every(7, 12, (t) => FX.whew(ctx, out, buf, t), 2);
+      every(6, 11, (t) => FX.woodstock(ctx, out, t), 4);
       break;
     }
 
-    // "It's freezing!" everyone shivering
+    // Snoopy in his winter hat at a frosty window, snow falling outside
     case "freezing":
       FX.wind(ctx, out, buf, Math.max(0.5, windy), { lowpass: 1800, freq: 600 });
+      every(1.5, 3.5, (t) => play(ctx, out, "glock", t, pick(["C7", "E7", "G6", "B6"]), 0.25), 0.8);
       every(3, 6, (t) => FX.chatter(ctx, out, buf, t), 1);
       every(5, 9, (t) => FX.brrr(ctx, out, t), 2.5);
       break;
+
+    // a windy day: the tree bends, Woodstock hangs on to his nest
+    case "wind":
+      FX.wind(ctx, out, buf, 1, { lowpass: 2000, freq: 500 });
+      every(3, 6, (t) => FX.gust(ctx, out, buf, t), 0.5);
+      every(2, 4, (t) => FX.rustle(ctx, out, buf, t), 1);
+      every(6, 10, (t) => FX.woodstock(ctx, out, t, true), 2.5);
+      break;
+
+    // Christmas tree in the snow with Snoopy and Woodstock
+    case "christmas": {
+      const tune = TUNES.jingle;
+      const beat = 60 / tune.bpm;
+      sched.bars(beat * 4, (t, i) => {
+        bar(ctx, out, "glock", t, beat, tune.bars[i % 16]);
+        play(ctx, out, "pluck", t, tune.bass[i % 16], 0.9);
+        play(ctx, out, "pluck", t + 2 * beat, tune.bass[i % 16], 0.7);
+        FX.sleighBells(ctx, out, buf, t, beat);
+      });
+      every(5, 9, (t) => FX.woodstock(ctx, out, t), 3);
+      break;
+    }
+
+    // New Year's party: Woodstocks with signs, Snoopy in a party hat
+    case "newyear": {
+      const tune = TUNES.auldLangSyne;
+      const beat = 60 / tune.bpm;
+      sched.bars(beat * 4, (t, i) => {
+        bar(ctx, out, "piano", t, beat, tune.bars[i % 8]);
+        tune.chords[i % 8].forEach((note) => {
+          play(ctx, out, "piano", t, note, 0.4);
+          play(ctx, out, "piano", t + 2 * beat, note, 0.3);
+        });
+      });
+      every(4, 8, (t) => FX.partyHorn(ctx, out, t), 1.5);
+      every(5, 9, (t) => FX.firework(ctx, out, buf, t), 3);
+      every(4, 7, (t) => FX.woodstock(ctx, out, t, true), 2);
+      break;
+    }
 
     default:
       FX.wind(ctx, out, buf, 0.4);

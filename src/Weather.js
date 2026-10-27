@@ -69,8 +69,10 @@ export default function Weather(props) {
     const normalTemp = data.temperature >= 37 || data.temperature < 0 ? 15 : data.temperature;
     shown = {
       ...data,
-      icon: testScene === "hot" || testScene === "freezing" ? data.icon : testScene,
+      scene: testScene,
+      icon: testScene.length === 3 ? testScene : data.icon,
       temperature: testScene === "hot" ? 38 : testScene === "freezing" ? -3 : normalTemp,
+      wind: testScene === "wind" ? 14 : data.wind,
     };
   }
 
@@ -131,8 +133,9 @@ export default function Weather(props) {
           weather={{
             id: data.weatherId,
             icon: shown.icon,
-            wind: data.wind,
+            wind: shown.wind,
             temp: shown.temperature,
+            scene: shown.scene,
           }}
         />
       )}
