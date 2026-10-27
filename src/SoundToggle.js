@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { sceneFor, startScene } from "./Soundscape";
+import { sceneFor, sceneLabel, startScene } from "./Soundscape";
 
 // On/off button for the weather sounds. Starts off: browsers only allow sound
 // after the visitor taps something, and it is the polite default anyway.
@@ -10,7 +10,6 @@ export default function SoundToggle(props) {
   const onRef = useRef(false);
   const scene = sceneFor(props.weather);
   const windBucket = Math.round((props.weather.wind || 0) / 4);
-  const hot = (props.weather.temp || 0) >= 32;
 
   useEffect(() => {
     if (!on || !ctxRef.current) return undefined;
@@ -21,7 +20,7 @@ export default function SoundToggle(props) {
     };
     // restart only when the kind of weather really changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [on, scene, windBucket, hot]);
+  }, [on, scene, windBucket]);
 
   // pause the sound while the tab is hidden, to save battery
   useEffect(() => {
@@ -58,7 +57,7 @@ export default function SoundToggle(props) {
       type="button"
       id="btn-sound"
       aria-pressed={on}
-      title={on ? `Sound: ${scene}` : "Play the sound of this weather"}
+      title={on ? `Sound: ${sceneLabel(props.weather)}` : "Play Snoopy's weather sounds"}
       onClick={toggle}
     >
       <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
